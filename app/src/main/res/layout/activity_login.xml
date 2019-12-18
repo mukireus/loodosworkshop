@@ -78,9 +78,9 @@
       android:layout_width="339dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="208dp"
+      android:layout_alignStart="@+id/txtLogin"
       android:layout_marginStart="-1dp"
       android:layout_alignParentTop="true"
-
       android:padding="10dp"
       android:background="@drawable/edit_text_line"
       android:ems="10"
