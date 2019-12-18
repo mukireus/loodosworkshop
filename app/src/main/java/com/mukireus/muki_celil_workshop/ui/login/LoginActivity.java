@@ -1,6 +1,10 @@
 package com.mukireus.muki_celil_workshop.ui.login;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
+import android.view.View.OnClickListener;
+import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -18,13 +22,21 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.mukireus.muki_celil_workshop.MainActivity;
 import com.mukireus.muki_celil_workshop.R;
 import com.mukireus.muki_celil_workshop.ui.login.LoginViewModel;
 import com.mukireus.muki_celil_workshop.ui.login.LoginViewModelFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
+  private static final String TAG = "EmailPassword";
   private LoginViewModel loginViewModel;
+  private FirebaseAuth mAuth;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -32,11 +44,22 @@ public class LoginActivity extends AppCompatActivity {
     setContentView(R.layout.activity_login);
     loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
         .get(LoginViewModel.class);
-
+    mAuth = FirebaseAuth.getInstance();
+    if(mAuth.getCurrentUser() != null) {
+      finish();
+      startActivity(new Intent(getApplicationContext(), MainActivity.class));
+    }
     final EditText usernameEditText = findViewById(R.id.username);
     final EditText passwordEditText = findViewById(R.id.password);
     final Button loginButton = findViewById(R.id.login);
     final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+
+    loginButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+
+      }
+    });
 
     loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
       @Override
@@ -124,4 +147,44 @@ public class LoginActivity extends AppCompatActivity {
   private void showLoginFailed(@StringRes Integer errorString) {
     Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
   }
+
+  private void userLogin(String email, String password){
+
+    Log.d(TAG, "signIn:" + email);
+
+    if (!validateForm()) {
+      return;
+    }
+
+    // [START sign_in_with_email]
+    mAuth.signInWithEmailAndPassword(email, password)
+        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+          @Override
+          public void onComplete(@NonNull Task<AuthResult> task) {
+            if (task.isSuccessful()) {
+              // Sign in success, update UI with the signed-in user's information
+              Log.d(TAG, "signInWithEmail:success");
+              Toast.makeText(LoginActivity.this, "Authentication success.",
+                  Toast.LENGTH_SHORT).show();
+              FirebaseUser user = mAuth.getCurrentUser();
+              updateUI(user);
+            } else {
+              // If sign in fails, display a message to the user.
+              Log.w(TAG, "signInWithEmail:failure", task.getException());
+              Toast.makeText(LoginActivity.this, "Authentication failed.",
+                  Toast.LENGTH_SHORT).show();
+              updateUI(null);
+            }
+
+            // [START_EXCLUDE]
+            if (!task.isSuccessful()) {
+              Toast.makeText(LoginActivity.this, "Authentication failed.",
+                  Toast.LENGTH_SHORT).show();
+            }
+            // [END_EXCLUDE]
+          }
+        });
+    // [END sign_in_with_email]
+  }
+
 }
