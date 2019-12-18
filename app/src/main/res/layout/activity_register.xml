@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/background"
+  tools:context=".RegisterActivity">
+
+  <TextView
+    android:id="@+id/txtSignup"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginStart="38dp"
+    android:layout_marginTop="91dp"
+    android:text="Register"
+    android:textColor="#FFF"
+    android:textSize="33sp" />
+
+
+
+  <EditText
+    android:id="@+id/txtEmail"
+    android:layout_width="339dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/txtSignup"
+    android:layout_alignStart="@+id/txtSignup"
+    android:layout_marginStart="-1dp"
+    android:layout_marginTop="24dp"
+    android:background="@drawable/edit_text_line"
+    android:ems="10"
+    android:importantForAutofill="no"
+    android:inputType="textEmailAddress"
+    android:padding="10dp"
+    android:hint="Email"
+    android:textColor="#60FFFFFF"
+    android:textColorHint="#60FFFFFF"
+    android:textCursorDrawable="@color/cursorColor"
+    android:textSize="13sp"
+    tools:ignore="HardcodedText,LabelFor,NegativeMargin,UnusedAttribute" />
+
+  <EditText
+    android:id="@+id/txtPassword"
+    android:layout_width="336dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/txtEmail"
+    android:layout_alignStart="@+id/txtEmail"
+    android:layout_alignEnd="@+id/txtEmail"
+    android:layout_marginStart="-1dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginEnd="3dp"
+    android:background="@drawable/edit_text_line"
+    android:ems="10"
+    android:importantForAutofill="no"
+    android:inputType="textPassword"
+    android:padding="10dp"
+    android:hint="Password"
+    android:textColorHint="#60FFFFFF"
+    android:textCursorDrawable="@color/cursorColor"
+    android:textColor="#60FFFFFF"
+    android:textSize="13sp"
+    tools:ignore="LabelFor,NegativeMarg
+        in,UnusedAttribute" />
+
+  <Button
+    android:id="@+id/btnSignUp"
+    android:layout_width="336dp"
+    android:layout_height="46dp"
+    android:layout_below="@+id/txtPassword"
+    android:layout_alignStart="@+id/txtSign"
+    android:layout_alignEnd="@+id/txtPassword"
+    android:layout_marginStart="1dp"
+    android:layout_marginTop="28dp"
+    android:layout_marginEnd="0dp"
+    android:background="@drawable/login_color"
+    android:text="Register"
+    android:textAllCaps="false"
+    android:textColor="#ffffff"
+    android:textSize="16sp" />
+
+
+
+  <Button
+    android:id="@+id/btnLogin"
+    android:layout_width="336dp"
+    android:layout_height="46dp"
+    android:layout_alignStart="@+id/btnSignUp"
+    android:layout_alignEnd="@+id/btnSignUp"
+    android:layout_alignBottom="@+id/btnSignUp"
+    android:layout_marginStart="1dp"
+    android:layout_marginEnd="0dp"
+    android:layout_marginBottom="-75dp"
+    android:background="@android:color/transparent"
+    android:text="Login"
+    android:textAllCaps="false"
+    android:textColor="#60FFFFFF"
+    android:textSize="16sp"
+    tools:ignore="NegativeMargin" />
+
+  <CheckBox
+    android:id="@+id/checkShowHidden"
+    android:layout_width="38dp"
+    android:layout_height="38dp"
+    android:layout_alignStart="@+id/txtPassword"
+    android:layout_alignTop="@+id/txtPassword"
+    android:layout_alignEnd="@+id/txtPassword"
+    android:layout_marginStart="297dp"
+    android:layout_marginTop="-1dp"
+    android:layout_marginEnd="2dp"
+    android:button="@drawable/eye_outline"
+    tools:ignore="NegativeMargin" />
+
+</RelativeLayout>
