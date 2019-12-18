@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "873304535588",
+    "firebase_url": "https://celil-muki.firebaseio.com",
+    "project_id": "celil-muki",
+    "storage_bucket": "celil-muki.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873304535588:android:10967e1c5d9818a1f69eb1",
+        "android_client_info": {
+          "package_name": "com.mukireus.muki_celil_workshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873304535588-mkocv0em6drb3fsqn06afh6b62gki22a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6wH-crgWqiBzekfNbQwe291zQ7fISudQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873304535588-mkocv0em6drb3fsqn06afh6b62gki22a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
